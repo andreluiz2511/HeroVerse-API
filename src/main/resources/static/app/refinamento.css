@@ -1,0 +1,288 @@
+/*
+ * HeroVerse — refinamento visual
+ *
+ * Mantém a identidade azul-marinho, ciano e violeta do projeto,
+ * mas usa um visual mais simples para facilitar a leitura.
+ * Este arquivo é carregado depois de styles.css. Para reverter,
+ * basta retirar seu <link> de index.html.
+ */
+
+:root {
+    --display: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --panel: #111a2c;
+    --line: #2a3851;
+    --line-2: #38506b;
+    --radius: 13px;
+    --glow: none;
+    --shadow: 0 8px 24px rgba(0, 0, 0, 0.20);
+}
+
+/* Base sem as grades e os efeitos luminosos do fundo anterior. */
+body {
+    background: radial-gradient(ellipse 650px 360px at 86% 0%, rgba(165, 139, 255, .055), transparent 75%), #090f1d;
+    background-attachment: fixed;
+    line-height: 1.55;
+}
+
+/* Cabeçalho */
+.hud {
+    background: #0c1424;
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: none;
+    padding-block: 13px;
+}
+.brand span {
+    font-size: 19px;
+    letter-spacing: .025em;
+    font-weight: 750;
+}
+.brand b {
+    color: var(--cyan);
+    background: none;
+    -webkit-text-fill-color: currentColor;
+}
+.hud-status {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: .01em;
+    text-transform: none;
+}
+.hud-status i { box-shadow: none; animation: none; }
+.agent { border-radius: 10px; background: var(--panel); }
+.agent:hover { border-color: var(--line-2); }
+.emblem { background: var(--cyan); font-family: var(--sans); }
+.emblem-lg { box-shadow: none; }
+
+/* Navegação: mantém a posição e os links existentes. */
+.dock {
+    padding: 5px;
+    gap: 3px;
+    background: #121b2c;
+    border: 1px solid #33415a;
+    border-radius: 15px;
+    backdrop-filter: none;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, .28);
+}
+.dock a {
+    border-radius: 10px;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 550;
+    letter-spacing: 0;
+    text-transform: none;
+}
+.dock a svg { width: 19px; height: 19px; }
+.dock a.is-active {
+    background: #26364c;
+    color: var(--cyan);
+    box-shadow: inset 0 0 0 1px #3c6373;
+}
+
+/* Títulos, textos e espaçamento */
+.view { max-width: 1190px; }
+.page { gap: 22px; }
+.kicker {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .035em;
+    text-transform: none;
+}
+.kicker::before { display: none; }
+.page-title {
+    font-size: clamp(30px, 3.2vw, 37px);
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -.035em;
+    text-transform: none;
+}
+.section-title {
+    font-size: 19px;
+    line-height: 1.35;
+    letter-spacing: -.02em;
+    text-transform: none;
+    font-weight: 650;
+}
+.page-subtitle { max-width: 620px; }
+
+/* Cartões, estatísticas e destaques */
+.panel {
+    background: var(--panel);
+    border-color: var(--line);
+    border-radius: var(--radius);
+    backdrop-filter: none;
+    padding: 21px;
+}
+.panel-glow { border-color: #38516b; box-shadow: none; }
+.corner::before, .corner::after { display: none; }
+.spotlight h1 {
+    font-size: clamp(32px, 3.7vw, 43px);
+    line-height: 1.16;
+    font-weight: 750;
+    letter-spacing: -.045em;
+    text-transform: none;
+}
+.spotlight h1 span {
+    color: var(--cyan);
+    background: none;
+    -webkit-text-fill-color: currentColor;
+}
+.spot-card { width: 195px; transform: none; }
+.spot-card .hero-card:hover { transform: none; }
+.mini-stat {
+    background: var(--panel);
+    border-radius: 12px;
+    padding: 16px;
+}
+.mini-stat:hover { border-color: var(--line-2); }
+.mini-stat b {
+    font-size: 33px;
+    font-weight: 700;
+    letter-spacing: -.03em;
+    color: var(--cyan);
+    background: none;
+    -webkit-text-fill-color: currentColor;
+}
+.mini-stat span {
+    font-size: 12px;
+    letter-spacing: .01em;
+    text-transform: none;
+}
+.rank .bar i { background: var(--cyan); }
+.step span {
+    color: var(--violet);
+    -webkit-text-stroke: 0;
+    font-size: 25px;
+    font-weight: 650;
+}
+
+/* Controles: menos gradiente, mais contraste e hierarquia. */
+.btn {
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 650;
+    letter-spacing: 0;
+    text-transform: none;
+    border-radius: 9px;
+    padding: 10px 16px;
+}
+.btn-sm { font-size: 13px; padding: 7px 12px; border-radius: 8px; }
+.btn-primary { background: var(--cyan); color: #0a1b25; box-shadow: none; }
+.btn-primary:hover { background: #79e9e9; color: #0a1b25; box-shadow: none; }
+.btn-secondary { background: #25344c; border-color: #425572; }
+.btn-secondary:hover { border-color: #6387a2; }
+.btn-ghost:hover, .icon-btn:hover { border-color: var(--line-2); }
+.segmented { border-radius: 10px; }
+.segmented a, .segmented button {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 0;
+    text-transform: none;
+    border-radius: 7px;
+}
+.segmented .is-active { background: #2a3d53; color: var(--cyan); }
+.page-btn { font-family: var(--sans); font-size: 13px; border-radius: 8px; }
+.page-btn.is-current { background: #2a3d53; color: var(--cyan); border-color: #3f697a; }
+
+/* Cartas de heróis: preserva a cor do nível sem a borda brilhante. */
+.card-grid { gap: 16px; }
+.hero-card {
+    padding: 1px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 13px;
+    transition: border-color .16s, box-shadow .16s;
+}
+.hero-card:hover {
+    transform: none;
+    border-color: var(--nivel, var(--cyan));
+    box-shadow: 0 7px 22px rgba(0, 0, 0, .20);
+}
+.hero-inner {
+    background: #111a2b;
+    border-radius: 11px;
+}
+.hero-inner::after { display: none; }
+.hero-mono {
+    color: color-mix(in srgb, var(--nivel, var(--cyan)) 78%, #d4e6ee);
+    -webkit-text-stroke: 0;
+    filter: none;
+    font-size: 52px;
+}
+.hero-name {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -.025em;
+    text-transform: none;
+}
+.power-fill { background: var(--nivel, var(--cyan)); box-shadow: none; }
+.power-value { font-size: 15px; }
+.tag { letter-spacing: .025em; text-transform: none; }
+
+/* Tabelas, detalhes, formulários e janelas */
+th { font-family: var(--sans); font-size: 12px; font-weight: 650; letter-spacing: .02em; text-transform: none; }
+.tabs button { font-family: var(--sans); font-size: 14px; font-weight: 600; letter-spacing: 0; text-transform: none; }
+.spec dt, .id-meta dt { font-family: var(--sans); letter-spacing: .01em; text-transform: none; }
+.ability { background: #17253a; border-color: var(--line); }
+.ability.weak { background: #251f30; }
+.ability h3, .squad h2, .id-card h2, .modal-aside h3, .modal-header h2, .state-title {
+    font-family: var(--sans);
+    letter-spacing: -.02em;
+    line-height: 1.25;
+    text-transform: none;
+}
+.ability h3 { font-size: 21px; }
+.squad h2 { font-size: 23px; }
+.id-card h2 { font-size: 25px; }
+.modal-aside h3, .modal-header h2 { font-size: 22px; }
+.state-title { font-size: 21px; }
+input, select, textarea { background: #0e1829; border-color: #35465e; border-radius: 8px; }
+input:focus, select:focus, textarea:focus { box-shadow: 0 0 0 2px rgba(83, 224, 225, .13); }
+.modal { border-color: var(--line-2); border-radius: 14px; box-shadow: 0 18px 50px rgba(0, 0, 0, .45); }
+.modal-aside { background: #131e31; }
+.modal-backdrop { backdrop-filter: blur(3px); }
+.squad-foot { border-top-style: solid; }
+
+@media (max-width: 700px) {
+    .view { padding-top: 22px; }
+    .spotlight h1 { font-size: 34px; }
+    .hero-name { font-size: 19px; }
+    .hero-mono { font-size: 44px; }
+    .dock a { font-size: 11px; }
+}
+
+/* Navegação no topo: fica acessível e não cobre os cartões da página. */
+body { padding-bottom: 0; }
+.dock {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    transform: none;
+    width: min(1190px, calc(100% - 56px));
+    margin: 14px auto 0;
+    justify-content: flex-start;
+    box-shadow: none;
+}
+.dock a {
+    flex-direction: row;
+    gap: 8px;
+    min-width: unset;
+    padding: 10px 15px;
+}
+.site-footer { margin-top: 18px; }
+@media (max-width: 700px) {
+    .dock {
+        left: auto;
+        right: auto;
+        bottom: auto;
+        width: calc(100% - 24px);
+        margin: 10px 12px 0;
+        overflow-x: auto;
+        justify-content: flex-start;
+    }
+    .dock a { flex: 0 0 auto; padding: 9px 10px; gap: 6px; }
+    .dock a svg { width: 16px; height: 16px; }
+}

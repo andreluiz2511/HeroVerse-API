@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HeroVerse | Documentação da API</title>
+    <link rel="icon" type="image/svg+xml" href="/img/logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/swagger-ui/swagger-ui.css">
+    <style>
+        body { margin: 0; }
+        .hv-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 14px 32px; background: #070c19; border-bottom: 1px solid rgba(83, 224, 225, 0.35); }
+        .hv-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #eaf1ff; }
+        .hv-brand img { width: 40px; height: 40px; }
+        .hv-brand-title { font-family: 'Rajdhani', 'Segoe UI', sans-serif; font-size: 26px; font-weight: 700; letter-spacing: 0.08em; line-height: 1; }
+        .hv-brand-title b { background: linear-gradient(120deg, #53e0e1, #a58bff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .hv-brand-sub { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #53e0e1; text-transform: uppercase; letter-spacing: 0.14em; margin-top: 4px; }
+        .hv-nav { display: flex; gap: 6px; flex-wrap: wrap; }
+        .hv-nav a { font-family: 'Rajdhani', 'Segoe UI', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.06em; text-transform: uppercase; color: #c3d0e8; text-decoration: none; padding: 7px 14px; border: 1px solid #26375a; border-radius: 10px; background: #111a2c; }
+        .hv-nav a:hover { color: #071021; background: linear-gradient(120deg, #53e0e1, #a58bff); border-color: transparent; }
+        .swagger-ui .parameter__name.required::after { content: "obrigatório"; }
+    </style>
+</head>
+<body>
+    <header class="hv-header">
+        <a class="hv-brand" href="/">
+            <img src="/img/logo.svg" alt="Logo HeroVerse">
+            <div>
+                <div class="hv-brand-title">HERO<b>VERSE</b></div>
+                <div class="hv-brand-sub">documentação interativa</div>
+            </div>
+        </a>
+        <nav class="hv-nav">
+            <a href="/">Início</a>
+            <a href="/ajuda.html">Guia de uso</a>
+            <a href="/termos.html">Termos</a>
+        </nav>
+    </header>
+
+    <div id="swagger-ui"></div>
+
+    <script src="/swagger-ui/swagger-ui-bundle.js"></script>
+    <script>
+        const TRADUCOES = {
+            'Parameters': 'Parâmetros', 'No parameters': 'Sem parâmetros', 'Try it out': 'Testar', 'Cancel': 'Cancelar',
+            'Execute': 'Executar', 'Clear': 'Limpar', 'Responses': 'Respostas', 'Request body': 'Corpo da requisição',
+            'Code': 'Código', 'Description': 'Descrição', 'Name': 'Nome', 'No links': 'Sem links', 'Links': 'Links',
+            'Example Value': 'Exemplo', 'Edit Value': 'Editar valor', 'Media type': 'Tipo de mídia',
+            'Controls Accept header.': 'Define o header Accept.', 'Server response': 'Resposta do servidor',
+            'Response body': 'Corpo da resposta', 'Response headers': 'Headers da resposta', 'Request URL': 'URL da requisição',
+            'Details': 'Detalhes', 'Undocumented': 'Não documentado', 'Download': 'Baixar', 'Servers': 'Servidores',
+            'required': 'obrigatório', 'Loading...': 'Carregando...', 'Duration': 'Duração', 'Schemas': 'Schemas',
+            'Failed to fetch.': 'Não foi possível conectar à API.', 'Possible Reasons:': 'Possíveis causas:',
+            'Terms of service': 'Termos de serviço', '- Website': '- Site', 'Find out more about this operation': 'Saiba mais'
+        };
+
+        function traduzir(raiz) {
+            const walker = document.createTreeWalker(raiz, NodeFilter.SHOW_TEXT);
+            let node;
+            while ((node = walker.nextNode())) {
+                const texto = node.nodeValue.trim();
+                if (TRADUCOES[texto]) {
+                    node.nodeValue = node.nodeValue.replace(texto, TRADUCOES[texto]);
+                } else if (texto.startsWith('Send email to ')) {
+                    node.nodeValue = node.nodeValue.replace('Send email to ', 'Enviar e-mail para ');
+                } else if (texto.endsWith(' - Website')) {
+                    node.nodeValue = node.nodeValue.replace(' - Website', ' - Site');
+                }
+            }
+            raiz.querySelectorAll('.response-control-media-type__accept-message').forEach(el => {
+                if (el.textContent !== 'Define o header Accept.') el.textContent = 'Define o header Accept.';
+            });
+            raiz.querySelectorAll('.servers option').forEach(option => {
+                if (option.textContent.includes('Generated server url')) {
+                    option.textContent = option.textContent.replace('Generated server url', 'servidor da API');
+                }
+            });
+            raiz.querySelectorAll('input.operation-filter-input').forEach(input => {
+                input.placeholder = 'Filtrar por seção ou caminho';
+            });
+            raiz.querySelectorAll('textarea.body-param__text, input[placeholder]').forEach(input => {
+                if (TRADUCOES[input.placeholder]) input.placeholder = TRADUCOES[input.placeholder];
+            });
+        }
+
+        new MutationObserver(() => traduzir(document.getElementById('swagger-ui')))
+            .observe(document.getElementById('swagger-ui'), { childList: true, subtree: true });
+    </script>
+    <script>
+        window.ui = SwaggerUIBundle({
+            url: '/v3/api-docs',
+            dom_id: '#swagger-ui',
+            deepLinking: true,
+            docExpansion: 'none',
+            defaultModelsExpandDepth: -1,
+            displayRequestDuration: true,
+            filter: true,
+            presets: [SwaggerUIBundle.presets.apis],
+            layout: 'BaseLayout'
+        });
+    </script>
+</body>
+</html>

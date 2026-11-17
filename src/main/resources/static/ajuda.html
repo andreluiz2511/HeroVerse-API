@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HeroVerse · Guia de uso</title>
+    <link rel="icon" type="image/svg+xml" href="/img/logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/pages.css">
+    <link rel="stylesheet" href="/pages-refinamento.css">
+</head>
+<body>
+    <header class="hv-header">
+        <a class="hv-brand" href="/">
+            <img src="/img/logo.svg" alt="Logo HeroVerse">
+            <div>
+                <div class="hv-brand-title">HERO<b>VERSE</b></div>
+                <div class="hv-brand-sub">guia de uso</div>
+            </div>
+        </a>
+        <nav class="hv-nav">
+            <a href="/">Início</a>
+            <a href="/swagger-ui/index.html">Swagger</a>
+            <a href="/termos.html">Termos</a>
+        </nav>
+    </header>
+
+    <main class="hv-page">
+        <h1>Guia de uso</h1>
+        <div id="guia"><p class="hv-muted">Carregando o guia...</p></div>
+    </main>
+
+    <footer class="hv-footer">
+        Projeto acadêmico · <a href="/termos.html">Termos de Serviço</a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        fetch('/guia.md')
+            .then(response => response.text())
+            .then(markdown => { document.getElementById('guia').innerHTML = marked.parse(markdown); })
+            .catch(() => {
+                document.getElementById('guia').innerHTML =
+                    '<p>Não foi possível carregar o guia. Veja a descrição no <a href="/swagger-ui/index.html">Swagger</a>.</p>';
+            });
+    </script>
+</body>
+</html>

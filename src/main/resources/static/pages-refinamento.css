@@ -1,0 +1,15 @@
+/* Ajuste visual das páginas Guia e Termos, seguindo o mesmo estilo do site. */
+:root { --display: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; }
+body { background: #090f1d; }
+.hv-header { background: #0c1424; border-bottom: 1px solid #2a3851; }
+.hv-brand-title { font-size: 21px; letter-spacing: .02em; }
+.hv-brand-title b { color: var(--cyan); background: none; -webkit-text-fill-color: currentColor; }
+.hv-brand-sub { font-family: var(--sans); font-size: 12px; letter-spacing: 0; text-transform: none; }
+.hv-nav a { font-family: var(--sans); font-size: 13px; text-transform: none; letter-spacing: 0; font-weight: 600; border-radius: 8px; }
+.hv-nav a:hover { background: #263b4e; color: var(--cyan); border-color: #416578; }
+.hv-page { background: #111a2c; box-shadow: none; border-radius: 13px; }
+.hv-page h1, .hv-page h2, .hv-page h3 { font-family: var(--sans); text-transform: none; letter-spacing: -.025em; line-height: 1.3; }
+.hv-page h1 { font-size: clamp(30px, 4vw, 39px); }
+.hv-page h2 { font-size: 23px; }
+.hv-page h3 { font-size: 19px; }
+.hv-page th { font-family: var(--sans); text-transform: none; letter-spacing: .01em; font-weight: 600; }

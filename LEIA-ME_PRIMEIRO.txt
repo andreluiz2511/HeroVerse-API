@@ -1,0 +1,47 @@
+API HEROIVERSE - PROJETO CORRIGIDO PARA INTELLIJ
+=================================================
+
+O QUE FOI CORRIGIDO
+- Eliminada a configuracao antiga do tipo SpringBootApplicationConfigurationType.
+- Criada configuracao compartilhada do tipo Application (Java), sem plugin Spring Boot.
+- Removidas as duas estruturas .idea conflitantes do ZIP original.
+- Organizado o projeto com pom.xml na pasta raiz apiHeroi.
+- Retirados arquivos compilados antigos em target; IntelliJ/Maven recompila.
+- Mantidos os fontes Java, dependencias, CSS do Swagger e demais recursos.
+- Incluido INICIAR_API.bat para iniciar via Maven Wrapper no Windows.
+
+COMO ABRIR CORRETAMENTE
+1) Extraia este ZIP para uma pasta NOVA (evite misturar com a copia antiga).
+2) No IntelliJ: File > Close Project (se houver um projeto antigo aberto).
+3) File > Open > selecione a pasta apiHeroi QUE CONTEM pom.xml.
+   Nao selecione apenas src nem a pasta onde o ZIP esta salvo.
+4) Aguarde o IntelliJ importar e sincronizar o Maven.
+   Se pedir, escolha "Load Maven Project" / "Trust Project".
+5) Em File > Project Structure > Project, selecione um JDK instalado
+   de versao 21 ou superior (o pom.xml compila com Java 21).
+6) No topo da tela, escolha ApiHeroiApplication do tipo "Application"
+   e clique em Run. Se a configuracao ainda nao aparecer, va em
+   Run > Edit Configurations e confira a configuracao compartilhada.
+
+ALTERNATIVA SE O RUN DO INTELLIJ NAO FUNCIONAR
+- De duplo clique em INICIAR_API.bat ou abra o Terminal do IntelliJ
+  na pasta do pom.xml e execute: .\mvnw.cmd spring-boot:run
+- O Maven Wrapper pode precisar de internet na primeira execucao
+  para baixar o Maven e as dependencias.
+
+QUANDO A API INICIAR
+- Front-end: http://localhost:8080/
+- Swagger: http://localhost:8080/swagger-ui/index.html
+- Guia de uso: http://localhost:8080/ajuda.html
+- Termos de Serviço: http://localhost:8080/termos.html
+- Perfil de teste: lider.alfa@exemplo.com / senha123
+- Detalhes completos no README.md
+
+IMPORTANTE
+- O erro "Unknown run configuration type" vem da configuracao
+  de execucao e nao indica, por si so, problema com codigo da API.
+- A configuracao Java usa o modulo apiHeroi, criado pela importacao Maven.
+  Se o IntelliJ der outro nome ao modulo, selecione esse modulo em
+  Run > Edit Configurations > Use classpath of module.
+- Caso o plugin do Spring Boot esteja desativado, nao o ative so
+  para executar esta configuracao: Application e suficiente.

@@ -1,0 +1,461 @@
+/* =============================================================
+   HeroVerse — Tema Swagger UI
+   Identidade: dark navy / cyan / violeta
+   CSS carregado pela página static/swagger-ui/index.html (versão temática)
+   ============================================================= */
+
+:root {
+    --hv-bg: #080d1b;
+    --hv-surface: #111a2c;
+    --hv-surface-2: #18243a;
+    --hv-surface-3: #1e2d47;
+    --hv-border: #30415e;
+    --hv-text: #eaf1ff;
+    --hv-muted: #abbad4;
+    --hv-cyan: #53e0e1;
+    --hv-violet: #a58bff;
+    --hv-shadow: 0 14px 36px rgba(0, 0, 0, .26);
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--hv-bg); }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--hv-text);
+    font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
+    background:
+        radial-gradient(ellipse at 9% 0%, rgba(83, 224, 225, .10), transparent 33rem),
+        radial-gradient(ellipse at 92% 12%, rgba(165, 139, 255, .11), transparent 30rem),
+        var(--hv-bg);
+    background-attachment: fixed;
+}
+
+.swagger-ui,
+.swagger-ui .wrapper {
+    color: var(--hv-text);
+    font-family: inherit;
+}
+
+.swagger-ui .wrapper {
+    max-width: 1260px;
+    padding: 0 26px;
+}
+
+/* --- Faixa superior / marca --- */
+.swagger-ui .topbar {
+    padding: 15px 0;
+    background: rgba(12, 19, 35, .93);
+    border-bottom: 1px solid rgba(83, 224, 225, .28);
+    box-shadow: 0 5px 22px rgba(0, 0, 0, .13);
+}
+
+.swagger-ui .topbar .wrapper {
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+}
+
+/* Oculta apenas o logotipo original. A documentação permanece intacta. */
+.swagger-ui .topbar .link { display: none; }
+
+.swagger-ui .topbar .wrapper::before {
+    content: "H";
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 42px;
+    height: 42px;
+    margin-right: 13px;
+    border-radius: 13px;
+    color: #07111c;
+    font-size: 22px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #63efdc, #7ca7ff);
+    box-shadow: 0 5px 20px rgba(83, 224, 225, .20);
+}
+
+.swagger-ui .topbar .wrapper::after {
+    content: "HEROVERSE  /  API EXPLORER";
+    color: #f0f7ff;
+    font-size: 13px;
+    letter-spacing: .17em;
+    font-weight: 850;
+}
+
+.swagger-ui .topbar .download-url-wrapper { display: none; }
+
+/* --- Apresentação da documentação --- */
+.swagger-ui .information-container { padding-top: 32px; }
+
+.swagger-ui .info {
+    margin: 0 0 28px;
+    padding: 32px 36px;
+    background: linear-gradient(126deg, rgba(27, 42, 66, .96), rgba(16, 25, 44, .97));
+    border: 1px solid rgba(107, 141, 185, .30);
+    border-radius: 20px;
+    box-shadow: var(--hv-shadow);
+}
+
+.swagger-ui .info .title {
+    margin: 3px 0 16px;
+    color: #fff;
+    font-size: clamp(26px, 3vw, 39px);
+    font-weight: 850;
+    letter-spacing: -.035em;
+    line-height: 1.18;
+}
+
+.swagger-ui .info .title::before {
+    content: "DOCUMENTAÇÃO INTERATIVA";
+    display: block;
+    width: fit-content;
+    margin-bottom: 15px;
+    padding: 6px 11px;
+    border: 1px solid rgba(83, 224, 225, .3);
+    border-radius: 999px;
+    color: var(--hv-cyan);
+    background: rgba(83, 224, 225, .08);
+    font-size: 10px;
+    letter-spacing: .16em;
+    font-weight: 800;
+}
+
+.swagger-ui .info .title small {
+    display: inline-flex;
+    vertical-align: middle;
+    margin-left: 9px;
+    border-radius: 8px;
+    background: var(--hv-violet);
+}
+
+.swagger-ui .info .title small pre {
+    color: #0b0924;
+    font-weight: 800;
+}
+
+.swagger-ui .info p,
+.swagger-ui .info li,
+.swagger-ui .info h2,
+.swagger-ui .info h3,
+.swagger-ui .info .base-url,
+.swagger-ui .info .description,
+.swagger-ui .info .markdown p,
+.swagger-ui .info .markdown li {
+    color: var(--hv-muted);
+    line-height: 1.7;
+}
+
+.swagger-ui a,
+.swagger-ui .info a {
+    color: #75e3ff;
+    text-decoration: none;
+}
+
+.swagger-ui a:hover,
+.swagger-ui .info a:hover {
+    color: #b4f7ff;
+    text-decoration: underline;
+}
+
+/* --- Títulos dos grupos (Herói, Equipe, etc.) --- */
+.swagger-ui .opblock-tag {
+    margin: 19px 0 13px;
+    padding: 15px 18px;
+    color: #f5f8ff;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: -.025em;
+    border: 1px solid var(--hv-border);
+    border-radius: 13px;
+    background: rgba(25, 37, 59, .81);
+    transition: background .2s ease, border-color .2s ease;
+}
+
+.swagger-ui .opblock-tag:hover {
+    background: #202f49;
+    border-color: rgba(83, 224, 225, .55);
+}
+
+.swagger-ui .opblock-tag .nostyle { color: inherit; }
+.swagger-ui .opblock-tag small { color: var(--hv-muted); }
+
+/* --- Rotas e cores dos métodos HTTP --- */
+.swagger-ui .opblock {
+    --hv-method: #5fa5ff;
+    --hv-method-bg: rgba(54, 137, 255, .095);
+    margin: 12px 0;
+    overflow: hidden;
+    border: 1px solid var(--hv-border);
+    border-left: 4px solid var(--hv-method);
+    border-radius: 13px;
+    background: var(--hv-surface);
+    box-shadow: 0 5px 16px rgba(0, 0, 0, .17);
+    transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+
+.swagger-ui .opblock:hover {
+    box-shadow: 0 12px 26px rgba(0, 0, 0, .25);
+}
+
+.swagger-ui .opblock.opblock-get { --hv-method: #5aaeff; --hv-method-bg: rgba(50, 131, 235, .105); }
+.swagger-ui .opblock.opblock-post { --hv-method: #3dd8a0; --hv-method-bg: rgba(31, 196, 137, .10); }
+.swagger-ui .opblock.opblock-put { --hv-method: #ffc06c; --hv-method-bg: rgba(239, 175, 70, .10); }
+.swagger-ui .opblock.opblock-patch { --hv-method: #ac97ff; --hv-method-bg: rgba(165, 139, 255, .10); }
+.swagger-ui .opblock.opblock-delete { --hv-method: #ff7789; --hv-method-bg: rgba(248, 89, 114, .095); }
+
+.swagger-ui .opblock.opblock-get,
+.swagger-ui .opblock.opblock-post,
+.swagger-ui .opblock.opblock-put,
+.swagger-ui .opblock.opblock-patch,
+.swagger-ui .opblock.opblock-delete { background: var(--hv-surface); border-color: var(--hv-border); border-left-color: var(--hv-method); }
+
+.swagger-ui .opblock .opblock-summary {
+    min-height: 62px;
+    padding: 7px 14px;
+    background: linear-gradient(90deg, var(--hv-method-bg), transparent 70%);
+    border: 0;
+}
+
+.swagger-ui .opblock.is-open .opblock-summary {
+    border-bottom: 1px solid var(--hv-border);
+}
+
+.swagger-ui .opblock .opblock-summary-method {
+    min-width: 84px;
+    padding: 9px 11px;
+    border-radius: 8px;
+    background: var(--hv-method) !important;
+    box-shadow: none;
+    color: #0a1523;
+    font-weight: 900;
+    font-size: 12px;
+    letter-spacing: .055em;
+    text-shadow: none;
+}
+
+.swagger-ui .opblock .opblock-summary-path,
+.swagger-ui .opblock .opblock-summary-path a,
+.swagger-ui .opblock .opblock-summary-description {
+    color: #e8f0ff;
+}
+
+.swagger-ui .opblock .opblock-summary-path {
+    font-size: 15px;
+    font-weight: 750;
+    word-break: break-word;
+}
+
+.swagger-ui .opblock .opblock-summary-description {
+    color: var(--hv-muted);
+    font-size: 12px;
+}
+
+.swagger-ui .opblock .opblock-summary .arrow { fill: var(--hv-muted); }
+
+/* --- Conteúdo expandido, parâmetros e respostas --- */
+.swagger-ui .opblock-body,
+.swagger-ui .opblock-section-header,
+.swagger-ui .opblock .opblock-section-header,
+.swagger-ui .scheme-container {
+    color: var(--hv-text);
+    background: var(--hv-surface) !important;
+    box-shadow: none;
+}
+
+.swagger-ui .scheme-container {
+    margin: 16px 0 28px;
+    padding: 18px 24px;
+    border: 1px solid var(--hv-border);
+    border-radius: 13px;
+}
+
+.swagger-ui .opblock-section-header,
+.swagger-ui .opblock .opblock-section-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--hv-border);
+}
+
+.swagger-ui h1,
+.swagger-ui h2,
+.swagger-ui h3,
+.swagger-ui h4,
+.swagger-ui h5,
+.swagger-ui label,
+.swagger-ui .opblock-section-header h4,
+.swagger-ui .opblock-description-wrapper,
+.swagger-ui .opblock-description-wrapper p,
+.swagger-ui .opblock-external-docs-wrapper p,
+.swagger-ui .parameter__name,
+.swagger-ui .parameter__type,
+.swagger-ui .parameter__in,
+.swagger-ui .response-col_status,
+.swagger-ui .responses-inner h4,
+.swagger-ui .responses-inner h5,
+.swagger-ui .responses-header td,
+.swagger-ui .tab li,
+.swagger-ui table thead tr td,
+.swagger-ui table thead tr th,
+.swagger-ui table tbody tr td {
+    color: var(--hv-text);
+}
+
+.swagger-ui .parameter__in,
+.swagger-ui .parameter__type,
+.swagger-ui .parameter__deprecated,
+.swagger-ui .parameter__name .required,
+.swagger-ui .response-col_description,
+.swagger-ui .response-col_links,
+.swagger-ui .responses-table .response-col_description__inner p {
+    color: var(--hv-muted);
+}
+
+.swagger-ui .parameter__name.required::after { color: #ff8d99; }
+.swagger-ui table { border-collapse: collapse; }
+.swagger-ui table tbody tr { border-bottom: 1px solid rgba(107, 137, 171, .20); }
+.swagger-ui table thead tr th { border-bottom: 1px solid var(--hv-border); }
+.swagger-ui .tab li.active { border-bottom-color: var(--hv-cyan); }
+.swagger-ui .tab li.active button.tablinks { color: var(--hv-cyan); }
+
+/* --- Inputs e campos da ferramenta Try it out --- */
+.swagger-ui input[type=text],
+.swagger-ui input[type=password],
+.swagger-ui input[type=email],
+.swagger-ui input[type=number],
+.swagger-ui select,
+.swagger-ui textarea,
+.swagger-ui .body-param__text {
+    min-height: 38px;
+    color: #f0f6ff;
+    background: #0a1425;
+    border: 1px solid #435675;
+    border-radius: 8px;
+    box-shadow: none;
+}
+
+.swagger-ui input::placeholder,
+.swagger-ui textarea::placeholder { color: #8094b5; }
+
+.swagger-ui input:focus,
+.swagger-ui select:focus,
+.swagger-ui textarea:focus {
+    border-color: var(--hv-cyan);
+    outline: 2px solid rgba(83, 224, 225, .18);
+}
+
+.swagger-ui select option { background: #101a2d; color: #fff; }
+.swagger-ui .parameter__name.required span { color: #ff93a0; }
+
+/* --- Botões da interface --- */
+.swagger-ui .btn {
+    padding: 9px 17px;
+    color: var(--hv-text);
+    border: 1px solid #5a7090;
+    border-radius: 9px;
+    font-weight: 750;
+    transition: background .18s ease, color .18s ease, border-color .18s ease;
+}
+
+.swagger-ui .btn:hover {
+    color: #fff;
+    background: #263853;
+    border-color: #7fa5c7;
+}
+
+.swagger-ui .btn.try-out__btn { color: var(--hv-cyan); border-color: var(--hv-cyan); }
+.swagger-ui .btn.try-out__btn:hover { color: #07151e; background: var(--hv-cyan); }
+.swagger-ui .btn.execute { color: #061823; background: var(--hv-cyan); border-color: var(--hv-cyan); }
+.swagger-ui .btn.execute:hover { background: #8cf5ec; }
+.swagger-ui .btn.cancel { color: #ffb0ba; border-color: #f48091; }
+.swagger-ui .btn.authorize { color: #80efc3; border-color: #54cda1; }
+.swagger-ui .btn.authorize svg { fill: #80efc3; }
+.swagger-ui .btn-group .btn { border-radius: 9px; }
+
+/* --- Blocos de JSON, retorno de requisições e schemas --- */
+.swagger-ui .highlight-code,
+.swagger-ui .microlight,
+.swagger-ui .model-example,
+.swagger-ui .model-box {
+    background: #080f1c !important;
+    border-radius: 9px;
+}
+
+.swagger-ui .highlight-code pre,
+.swagger-ui .microlight,
+.swagger-ui .highlight-code code,
+.swagger-ui .response-col_description__inner div.markdown,
+.swagger-ui .response-col_description__inner div.renderedMarkdown {
+    color: #dce8fc;
+}
+
+.swagger-ui .copy-to-clipboard { border-radius: 7px; }
+.swagger-ui .model-container,
+.swagger-ui .model,
+.swagger-ui section.models,
+.swagger-ui .models-control,
+.swagger-ui section.models.is-open { color: var(--hv-text); background: var(--hv-surface); border-color: var(--hv-border); }
+
+.swagger-ui section.models {
+    margin: 28px 0;
+    padding: 8px 16px;
+    border: 1px solid var(--hv-border);
+    border-radius: 13px;
+}
+
+.swagger-ui section.models h4,
+.swagger-ui section.models h4 span,
+.swagger-ui .model-title,
+.swagger-ui .model-box-control,
+.swagger-ui .model .property,
+.swagger-ui .model .prop-type,
+.swagger-ui .prop,
+.swagger-ui .prop-type {
+    color: #d9e7ff;
+}
+
+.swagger-ui .model-toggle::after { filter: invert(1); }
+.swagger-ui .model-hint { color: var(--hv-muted); }
+.swagger-ui .download-contents { color: var(--hv-cyan); }
+
+/* --- Pop-up de autenticação, eventuais alertas --- */
+.swagger-ui .dialog-ux .modal-ux {
+    color: var(--hv-text);
+    background: var(--hv-surface);
+    border: 1px solid var(--hv-border);
+    border-radius: 16px;
+    box-shadow: var(--hv-shadow);
+}
+
+.swagger-ui .dialog-ux .modal-ux-header,
+.swagger-ui .dialog-ux .modal-ux-content {
+    color: var(--hv-text);
+    background: var(--hv-surface);
+    border-color: var(--hv-border);
+}
+
+.swagger-ui .errors-wrapper { background: #3a1e2b; border-color: #f17b91; border-radius: 12px; }
+.swagger-ui .errors-wrapper h4,
+.swagger-ui .errors-wrapper p { color: #fff1f4; }
+.swagger-ui .loading-container .loading::after { color: var(--hv-cyan); }
+
+/* --- Melhor leitura em telas pequenas --- */
+@media (max-width: 768px) {
+    .swagger-ui .wrapper { padding: 0 14px; }
+    .swagger-ui .topbar .wrapper::after { font-size: 10px; letter-spacing: .1em; }
+    .swagger-ui .information-container { padding-top: 16px; }
+    .swagger-ui .info { padding: 22px 20px; border-radius: 15px; }
+    .swagger-ui .info .title { font-size: 26px; }
+    .swagger-ui .opblock-tag { padding: 12px; font-size: 18px; }
+    .swagger-ui .opblock .opblock-summary { padding: 8px; flex-wrap: wrap; }
+    .swagger-ui .opblock .opblock-summary-method { min-width: 65px; }
+    .swagger-ui .opblock .opblock-summary-description { width: 100%; margin: 5px 0 0; }
+    .swagger-ui .scheme-container { padding: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .swagger-ui .opblock,
+    .swagger-ui .opblock-tag,
+    .swagger-ui .btn { transition: none; }
+}

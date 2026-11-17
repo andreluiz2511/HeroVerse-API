@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: apiHeroi
+  datasource:
+    url: jdbc:h2:mem:heroverse
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+app:
+  cors:
+    allowed-origins: http://localhost:8080,http://localhost:3000,http://localhost:5173
